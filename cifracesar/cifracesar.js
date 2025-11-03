@@ -1,12 +1,11 @@
-const campoCifra = document.getElementById('campo_cifra');
-const campoDecifra = document.getElementById('resultado_cifra');
+const campoCifra = document.getElementById('campo_mensagem');
+const campoDecifra = document.getElementById('resultado_mensagem');
 const campoRotacoes = document.getElementById('campo_rotacoes');
-const resultadoCifra = document.getElementById('resultado_cifra');
+const resultadoCifra = document.getElementById('resultado_mensagem');
 const resultadoDecifra = document.getElementById('campo_cifra');
 const botaoCifrar = document.getElementById('botao_cifrar');
 const botaoDecifrar = document.getElementById('botao_decifrar');
 const botaoLimpar = document.getElementById('botao_limpar');
-const resultadoAlerta = document.getElementById('resultado_alerta');
 
 setInterval(atualizarRelogio, 1000);
 
@@ -43,46 +42,35 @@ function decifrar(texto, rotacoes) {
 }
 
 botaoCifrar.addEventListener('click', function() {
-    if (campoRotacoes.value > 26 || campoRotacoes.value < 0) {
-        resultadoAlerta.textContent = 'Insira uma chave válida!';
+    const texto = campoCifra.value;
+    const rotacoes = parseInt(campoRotacoes.value);
+
+    if (rotacoes >= 26 || rotacoes <= 0) {
+        resultadoCifra.textContent = 'Chave inválida! Digite um valor entre 1 e 25.';
         return
-    }
-        const texto = campoCifra.value;
-        const rotacoes = parseInt(campoRotacoes.value);
-        if (isNaN(rotacoes)) {
-            resultadoAlerta.textContent = 'Insira uma chave válida!';
-            return;
-        }
-        const textoCifrado = cifrar(texto, rotacoes);
-        resultadoCifra.textContent = textoCifrado;
+    } else if (isNaN(rotacoes)) {
+        resultadoCifra.textContent = 'Chave digitada não é um número! Digite um valor entre 1 e 26.';
+        return;
+    }    
+    const textoCifrado = cifrar(texto, rotacoes);
+    resultadoCifra.textContent = textoCifrado;
 });
 
 botaoDecifrar.addEventListener('click', function() {
-    if (campoRotacoes.value > 26 || campoRotacoes.value < 0) {
-        resultadoAlerta.textContent = 'Insira uma chave válida!';
+    const texto = campoCifra.value;
+    const rotacoes = parseInt(campoRotacoes.value);
+
+    if (rotacoes >= 26 || rotacoes <= 0) {
+        resultadoCifra.textContent = 'Chave inválida! Digite um valor entre 1 e 26.';
         return
+    } else if (isNaN(rotacoes)) {
+        resultadoCifra.textContent = 'Chave digitada não é um número! Digite um valor entre 1 e 26.';
+        return;
     }
-        const texto = campoCifra.value;
-        const rotacoes = parseInt(campoRotacoes.value);
-        if (isNaN(rotacoes)) {
-            resultadoAlerta.textContent = 'Insira uma chave válida!';
-            return;
-        }
-        const textoDecifrado = decifrar(texto, rotacoes);
-        resultadoCifra.textContent = textoDecifrado;
+    const textoDecifrado = decifrar(texto, rotacoes);
+    resultadoCifra.textContent = textoDecifrado;
 });
 
 botaoLimpar.addEventListener('click', function() {    
-    window.location.replace(window.location.href); 
+    window.location.reload(true);
 });
-
-function atualizarRelogio() {
-    const agora = new Date();
-    let dia = agora.getDate().toString().padStart(2, '0');
-    let mes = (agora.getMonth() + 1).toString().padStart(2, '0');
-    let ano = agora.getFullYear();
-    let horas = agora.getHours().toString().padStart(2, '0');
-    let minutos = agora.getMinutes().toString().padStart(2, '0');
-    document.getElementById('data').textContent = `${dia}/${mes}/${ano}`;
-    document.getElementById('horario').textContent = `${horas}:${minutos}`;
-}

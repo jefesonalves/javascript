@@ -9,26 +9,27 @@
 <body>
     <h2>Cifra de César: Codificar e Decodificar</h2>
     <p>Data atual: <span id="data"></span></p>
-    <p>Hora atual: <span id="horario"></span></p>
+    <p>Hora atual: <span id="hora"></span></p>
     <div class="container">
         <div class="campo">
-            <label for="campo_cifra">Mensagem</label>
-            <textarea rows="5" cols="50" id="campo_cifra" tabindex="1"></textarea>
+            <label for="campo_mensagem">Mensagem</label>
+            <textarea rows="5" cols="50" id="campo_mensagem" tabindex="1"></textarea>
         </div>
 
         <div class="campo">
-            <label for="resultado_cifra">Resultado</label>
-            <textarea readonly rows="5" cols="50" id="resultado_cifra" tabindex="2"></textarea>
+            <label for="resultado_mensagem">Resultado</label>
+            <textarea readonly rows="5" cols="50" id="resultado_mensagem" tabindex="2"></textarea>
         </div>
     </div>
     
     <label for="campo_rotacoes">Valor da chave: 0-25</label>
     <input type="number" id="campo_rotacoes" tabindex="3" size="2" value="0" min="0" max="26">
-    <button id="botao_cifrar">Cifrar Texto</button>
-    <button id="botao_decifrar">Decifrar Texto</button>
-    <button id="botao_limpar">Novo</button>
+    <button id="botao_cifrar">Cifrar</button>
+    <button id="botao_decifrar">Decifrar</button>
+    <button id="botao_limpar">Limpar</button>
+    <a href="index.html"><button id="voltar">Voltar</button></a>
     <p></p>
-    <div id="resultado_alerta"></div>
-    <script src="script.js"></script> 
+    <script src="comum.js"></script>
+    <script src="cifracesar.js"></script> 
 </body>
 </html>

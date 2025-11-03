@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifra de César</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Cifra de Vigenère: Codificar e Decodificar</h2>
+    <p>Data atual: <span id="data"></span></p>
+    <p>Hora atual: <span id="horario"></span></p>
+    <div class="container">
+        <div class="campo">
+            <label for="campo_cifra">Mensagem</label>
+            <textarea rows="5" cols="50" id="campo_cifra" tabindex="1"></textarea>
+        </div>
+
+        <div class="campo">
+            <label for="resultado_cifra">Resultado</label>
+            <textarea readonly rows="5" cols="50" id="resultado_cifra" tabindex="2"></textarea>
+        </div>
+    </div>
+    
+    <label for="campo_rotacoes">Senha [deve conter letras]:</label>
+    <input type="text" id="campo_rotacoes" tabindex="3" size="10" value="abc" min="0" max="26">
+    <button id="botao_cifrar">Cifrar Texto</button>
+    <button id="botao_decifrar">Decifrar Texto</button>
+    <button id="botao_limpar">Novo</button>
+    <a href="index.html"><button id="voltar">Voltar</button></a>
+    <p></p>
+    <div id="resultado_alerta"></div>
+    <script src="comum.js"></script>
+    <script src="cifravigenere.js"></script> 
+</body>
+</html>
